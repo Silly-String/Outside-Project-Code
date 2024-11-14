@@ -1,4 +1,4 @@
-package entities;
+package java.entities;
 import java.util.List;
 
 /**
@@ -9,10 +9,12 @@ public class Map {
     private int mapID;
     private List<Flight> flightList;
     private int zoomLevel;
-    private String centreCoordinates;
+    private double[] centreCoordinates;
 
     // Constructor
-    public Map(int mapID, List<Flight> flightList, int zoomLevel, String centreCoordinates) {
+    public Map(){}
+
+    public Map(int mapID, List<Flight> flightList, int zoomLevel, double[] centreCoordinates) {
         this.mapID = mapID;
         this.flightList = flightList;
         this.zoomLevel = zoomLevel;
@@ -32,7 +34,7 @@ public class Map {
         return zoomLevel;
     }
 
-    public String getCentreCoordinates() {
+    public double[] getCentreCoordinates() {
         return centreCoordinates;
     }
 
@@ -48,7 +50,7 @@ public class Map {
         }
     }
 
-    public void updateCentreCoordinates(String newCoordinates) {
+    public void updateCentreCoordinates(double[] newCoordinates) {
         this.centreCoordinates = newCoordinates;
     }
 

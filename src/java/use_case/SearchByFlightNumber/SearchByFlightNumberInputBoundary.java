@@ -1,4 +1,4 @@
-package use_case.SearchByFlightNumber;
+package java.use_case.SearchByFlightNumber;
 
 /**
  * The SearchByFlightNumber Use Case.

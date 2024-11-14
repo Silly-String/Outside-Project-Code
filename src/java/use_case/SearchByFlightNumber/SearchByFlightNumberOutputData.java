@@ -1,6 +1,6 @@
-package use_case.SearchByFlightNumber;
+package java.use_case.SearchByFlightNumber;
 
-import entities.Flight;
+import java.entities.Flight;
 
 /**
  * Output Data for the SearchByFlightNumber Use Case.
