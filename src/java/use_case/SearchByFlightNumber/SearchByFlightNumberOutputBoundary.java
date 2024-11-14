@@ -1,4 +1,4 @@
-package use_case.SearchByFlightNumber;
+package java.use_case.SearchByFlightNumber;
 
 /**
  * The output boundary for the SearchByFlightNumber Use Case.
