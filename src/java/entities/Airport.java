@@ -4,7 +4,6 @@ package java.entities;
  * The representation of an airport in our program.
  * Class created in the even we decide to use this instead of a string.
  */
-
 public class Airport {
 
     private String airportCode; // eg: "MNL" for Ninoy Aquino International(the iata code)

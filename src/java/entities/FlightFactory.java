@@ -3,7 +3,6 @@ package java.entities;
 /**
  * Factory for creating empty Flight objects.
  */
-
 public class FlightFactory {
 
     public Flight create(String flightNumber, Airline airline, Airport departureAirport, Airport arrivalAirport,
