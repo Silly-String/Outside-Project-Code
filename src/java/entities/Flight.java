@@ -3,7 +3,6 @@ package java.entities;
 /**
  * The representation of a flight in our program.
  */
-
 public class Flight {
     private String flightNumber;
     private Airline airline;

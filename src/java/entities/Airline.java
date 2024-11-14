@@ -3,7 +3,6 @@ package java.entities;
 /**
  * Represents an airline with relevant details.
  */
-
 public class Airline {
     private String airlineCode;      // e.g., "AA" for American Airlines (the iata code)
     private String name;             // Full name of the airline

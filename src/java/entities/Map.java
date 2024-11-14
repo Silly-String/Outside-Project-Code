@@ -4,7 +4,6 @@ import java.util.List;
 /**
  * The representation of a map in our program.
  */
-
 public class Map {
     private int mapID;
     private List<Flight> flightList;
