@@ -8,10 +8,10 @@ import java.util.List;
  */
 public class SearchByFlightNumberInteractor implements SearchByFlightNumberInputBoundary {
 
-    private final SearchByFlightNumberUserDataAccessInterface flightDataAccessObject;
+    private final SearchByFlightNumberDataAccessInterface flightDataAccessObject;
     private final SearchByFlightNumberOutputBoundary flightPresenter;
 
-    public SearchByFlightNumberInteractor(SearchByFlightNumberUserDataAccessInterface flightDataAccessObject,
+    public SearchByFlightNumberInteractor(SearchByFlightNumberDataAccessInterface flightDataAccessObject,
                                           SearchByFlightNumberOutputBoundary flightPresenter) {
         this.flightDataAccessObject = flightDataAccessObject;
         this.flightPresenter = flightPresenter;
