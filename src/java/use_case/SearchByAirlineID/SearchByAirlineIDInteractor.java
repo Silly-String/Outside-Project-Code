@@ -1,7 +1,6 @@
 package java.use_case.SearchByAirlineID;
 
 import java.entities.Flight;
-import java.use_case.SearchByFlightNumber.SearchByFlightNumberOutputData;
 import java.util.List;
 
 /**
