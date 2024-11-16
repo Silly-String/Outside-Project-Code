@@ -9,12 +9,12 @@ import java.util.List;
 public class SearchByFlightNumberInteractor implements SearchByFlightNumberInputBoundary {
 
     private final SearchByFlightNumberDataAccessInterface flightDataAccessObject;
-    private final SearchByFlightNumberOutputBoundary flightPresenter;
+    private final SearchByFlightNumberOutputBoundary searchByFlightNumberPresenter;
 
     public SearchByFlightNumberInteractor(SearchByFlightNumberDataAccessInterface flightDataAccessObject,
                                           SearchByFlightNumberOutputBoundary flightPresenter) {
         this.flightDataAccessObject = flightDataAccessObject;
-        this.flightPresenter = flightPresenter;
+        this.searchByFlightNumberPresenter = flightPresenter;
     }
 
     @Override
@@ -24,10 +24,10 @@ public class SearchByFlightNumberInteractor implements SearchByFlightNumberInput
 
         if (foundFlight != null) {
             SearchByFlightNumberOutputData outputData = new SearchByFlightNumberOutputData(foundFlight, true);
-            flightPresenter.presentSuccess(outputData);
+            searchByFlightNumberPresenter.presentSuccess(outputData);
         } else {
             SearchByFlightNumberOutputData outputData = new SearchByFlightNumberOutputData(null, false);
-            flightPresenter.presentFailure(outputData);
+            searchByFlightNumberPresenter.presentFailure(outputData);
         }
     }
 }

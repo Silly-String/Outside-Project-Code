@@ -14,5 +14,5 @@ public interface SearchByAirlineIDOutputBoundary {
      * Prepares the failure view for the Search by Airline ID use case.
      * @param errorMessage the explanation of the failure
      */
-    void prepareFailView(String errorMessage);
+    void prepareFailView(SearchByAirlineIDOutputData errorMessage);
 }
