@@ -18,16 +18,16 @@ public class SearchByFlightNumberInteractor implements SearchByFlightNumberInput
     }
 
     @Override
-    public void execute(SearchByFlightNumberInputData inputData) {
-        List<Flight> flights = flightDataAccessObject.retrieveFlights();
-        Flight foundFlight = inputData.SearchByFlightNumber(inputData.getFlightNumber());
+    public void execute(SearchByFlightNumberInputData searchByFlightNumberInputData) {
+        String flightnumber = searchByFlightNumberInputData.getFlightNumber();
+        List<Flight> foundFlights = flightDataAccessObject.getFlightsByFlightNumber(flightnumber);
 
-        if (foundFlight != null) {
-            SearchByFlightNumberOutputData outputData = new SearchByFlightNumberOutputData(foundFlight, true);
-            searchByFlightNumberPresenter.presentSuccess(outputData);
+        if (foundFlights != null) {
+            SearchByFlightNumberOutputData outputData = new SearchByFlightNumberOutputData(foundFlights);
+            searchByFlightNumberPresenter.prepareSuccessView(outputData);
         } else {
-            SearchByFlightNumberOutputData outputData = new SearchByFlightNumberOutputData(null, false);
-            searchByFlightNumberPresenter.presentFailure(outputData);
+            SearchByFlightNumberOutputData outputData = new SearchByFlightNumberOutputData("No such flights located");
+            searchByFlightNumberPresenter.prepareFailView(outputData);
         }
     }
 }

@@ -19,8 +19,8 @@ public class SearchByAirlineIDInteractor implements SearchByAirlineIDInputBounda
 
     @Override
     public void execute(SearchByAirlineIDInputData searchByAirlineIDInputData) {
-        String code = searchByAirlineIDInputData.getAirlineIataCode();
-        List<Flight> foundFlights = flightDataAccessObject.getFlightsByAirlineId(code);
+        String airlineid = searchByAirlineIDInputData.getAirlineIataCode();
+        List<Flight> foundFlights = flightDataAccessObject.getFlightsByAirlineId(airlineid);
 
         if (foundFlights != null) {
             SearchByAirlineIDOutputData outputData = new SearchByAirlineIDOutputData(foundFlights);
