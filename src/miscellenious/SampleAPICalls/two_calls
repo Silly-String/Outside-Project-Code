@@ -1,0 +1,114 @@
+{
+    "pagination": {
+        "limit": 100,
+        "offset": 0,
+        "count": 100,
+        "total": 272118
+    },
+    "data": [
+        {
+            "flight_date": "2024-11-10",
+            "flight_status": "landed",
+            "departure": {
+                "airport": "Seoul (Incheon)",
+                "timezone": "Asia/Seoul",
+                "iata": "ICN",
+                "icao": "RKSI",
+                "terminal": "1",
+                "gate": "112",
+                "delay": null,
+                "scheduled": "2024-11-10T01:15:00+00:00",
+                "estimated": "2024-11-10T01:15:00+00:00",
+                "actual": "2024-11-10T01:10:00+00:00",
+                "estimated_runway": "2024-11-10T01:10:00+00:00",
+                "actual_runway": "2024-11-10T01:10:00+00:00"
+            },
+            "arrival": {
+                "airport": "Ninoy Aquino International",
+                "timezone": "Asia/Manila",
+                "iata": "MNL",
+                "icao": "RPLL",
+                "terminal": "3",
+                "gate": null,
+                "baggage": null,
+                "delay": null,
+                "scheduled": "2024-11-10T04:30:00+00:00",
+                "estimated": "2024-11-10T04:30:00+00:00",
+                "actual": "2024-11-10T03:49:00+00:00",
+                "estimated_runway": "2024-11-10T03:49:00+00:00",
+                "actual_runway": "2024-11-10T03:49:00+00:00"
+            },
+            "airline": {
+                "name": "Cebu Pacific Air",
+                "iata": "5J",
+                "icao": "CEB"
+            },
+            "flight": {
+                "number": "187",
+                "iata": "5J187",
+                "icao": "CEB187",
+                "codeshared": null
+            },
+            "aircraft": {
+                "registration": "RP-C3904",
+                "iata": "A339",
+                "icao": "A339",
+                "icao24": "758706"
+            },
+            "live": null
+        },
+        {
+            "flight_date": "2024-11-10",
+            "flight_status": "active",
+            "departure": {
+                "airport": "Tontouta",
+                "timezone": "Pacific/Noumea",
+                "iata": "NOU",
+                "icao": "NWWW",
+                "terminal": null,
+                "gate": null,
+                "delay": 27,
+                "scheduled": "2024-11-10T01:05:00+00:00",
+                "estimated": "2024-11-10T01:05:00+00:00",
+                "actual": "2024-11-10T01:32:00+00:00",
+                "estimated_runway": "2024-11-10T01:32:00+00:00",
+                "actual_runway": "2024-11-10T01:32:00+00:00"
+            },
+            "arrival": {
+                "airport": "Singapore Changi",
+                "timezone": "Asia/Singapore",
+                "iata": "SIN",
+                "icao": "WSSS",
+                "terminal": "3",
+                "gate": "T3",
+                "baggage": "45",
+                "delay": 16,
+                "scheduled": "2024-11-10T07:10:00+00:00",
+                "estimated": "2024-11-10T07:10:00+00:00",
+                "actual": null,
+                "estimated_runway": null,
+                "actual_runway": null
+            },
+            "airline": {
+                "name": "Air France",
+                "iata": "AF",
+                "icao": "AFR"
+            },
+            "flight": {
+                "number": "4022",
+                "iata": "AF4022",
+                "icao": "AFR4022",
+                "codeshared": {
+                    "airline_name": "aircalin",
+                    "airline_iata": "sb",
+                    "airline_icao": "aci",
+                    "flight_number": "740",
+                    "flight_iata": "sb740",
+                    "flight_icao": "aci740"
+                }
+            },
+            "aircraft": null,
+            "live": null
+        }
+    ]
+}
