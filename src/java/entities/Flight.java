@@ -5,6 +5,7 @@ package java.entities;
  */
 public class Flight {
     private String flightNumber;
+    private String flightDate;
     private Airline airline;
     private Airport departureAirport;
     private Airport arrivalAirport;
@@ -23,6 +24,10 @@ public class Flight {
     // Getters
     public String getFlightNumber() {
         return flightNumber;
+    }
+
+    public String getFlightDate() {
+        return flightDate;
     }
 
     public Airline getAirline() {
@@ -64,6 +69,10 @@ public class Flight {
     // Setters
     public void setFlightNumber(String flightNumber) {
         this.flightNumber = flightNumber;
+    }
+
+    public void setFlightDate(String flightDate) {
+        this.flightDate = flightDate;
     }
 
     public void setAirline(Airline airline) {

@@ -5,13 +5,14 @@ package java.entities;
  */
 public class FlightFactory {
 
-    public Flight create(String flightNumber, Airline airline, Airport departureAirport, Airport arrivalAirport,
+    public Flight create(String flightNumber, String flightDate, Airline airline, Airport departureAirport, Airport arrivalAirport,
                          String status, String scheduledArrivalTime, String scheduledDepartureTime,
                          String estimatedArrivalTime, String estimatedDepartureTime, double[] currentLocation) {
 
         Flight flight = new Flight();
 
         flight.setFlightNumber(flightNumber);
+        flight.setFlightDate(flightDate);
         flight.setAirline(airline);
         flight.setDepartureAirport(departureAirport);
         flight.setArrivalAirport(arrivalAirport);

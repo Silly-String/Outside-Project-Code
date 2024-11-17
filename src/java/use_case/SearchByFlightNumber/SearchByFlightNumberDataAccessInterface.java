@@ -12,5 +12,5 @@ public interface SearchByFlightNumberDataAccessInterface {
      * Retrieves a list of flights from the system.
      * @return a list of flights
      */
-    List<Flight> retrieveFlights();
+    List<Flight> getFlightsByFlightNumber(String flightNumber);
 }

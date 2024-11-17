@@ -1,36 +1,18 @@
 package java.use_case.SearchByFlightNumber;
 
-import java.entities.Flight;
-import java.util.List;
-
 /**
  * The input data for the SearchByFlightNumber Use Case.
  */
 public class SearchByFlightNumberInputData {
+    private final String flightNumber;  // (e.g., "187")
 
-    private List<Flight> flights;
-    private String flightNumber;
-
-
-    public void SearchFlightByNumberInputData(List<Flight> flights) {
-        this.flights = flights;
+    // Constructor to initialize the fields
+    public SearchByFlightNumberInputData(String flightNumber) {
+        this.flightNumber = flightNumber;
     }
 
+    // Getters
     public String getFlightNumber() {
         return flightNumber;
-    }
-
-    /**
-     * Searches for a flight by flight number.
-     * @param flightNumber the flight number to search for
-     * @return the Flight object if found, otherwise null
-     */
-    public Flight SearchByFlightNumber(String flightNumber) {
-        for (Flight flight : flights) {
-            if (flight.getFlightNumber().equalsIgnoreCase(flightNumber)) {
-                return flight;
-            }
-        }
-        return null; // No matching flight found
     }
 }
