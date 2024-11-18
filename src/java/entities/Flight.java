@@ -114,20 +114,19 @@ public class Flight {
     // string method
     @Override
     public String toString() {
-        return "Flight {\n" +
-                "  flightNumber='" + flightNumber + "',\n" +
-                "  flightDate='" + flightDate + "',\n" +
-                "  airline=" + (airline != null ? airline.getName() : "N/A") + ",\n" +
-                "  departureAirport=" + (departureAirport != null ? departureAirport.getName() : "N/A") + ",\n" +
-                "  arrivalAirport=" + (arrivalAirport != null ? arrivalAirport.getName() : "N/A") + ",\n" +
-                "  status='" + status + "',\n" +
-                "  scheduledDepartureTime='" + scheduledDepartureTime + "',\n" +
-                "  scheduledArrivalTime='" + scheduledArrivalTime + "',\n" +
-                "  estimatedDepartureTime='" + estimatedDepartureTime + "',\n" +
-                "  estimatedArrivalTime='" + estimatedArrivalTime + "',\n" +
-                "  currentLocation=" + (currentLocation != null && currentLocation.length >= 2
+        return "Flight Information:\n" +
+                "  flightNumber= '" + flightNumber + "',\n" +
+                "  flightDate= '" + flightDate + "',\n" +
+                "  airline= " + (airline != null ? airline.getName() : "N/A") + ",\n" +
+                "  departureAirport= " + (departureAirport != null ? departureAirport.getName() : "N/A") + ",\n" +
+                "  arrivalAirport= " + (arrivalAirport != null ? arrivalAirport.getName() : "N/A") + ",\n" +
+                "  status= '" + status + "',\n" +
+                "  scheduledDepartureTime= '" + scheduledDepartureTime + "',\n" +
+                "  scheduledArrivalTime= '" + scheduledArrivalTime + "',\n" +
+                "  estimatedDepartureTime= '" + estimatedDepartureTime + "',\n" +
+                "  estimatedArrivalTime= '" + estimatedArrivalTime + "',\n" +
+                "  currentLocation= " + (currentLocation != null && currentLocation.length >= 2
                 ? "[" + currentLocation[0] + ", " + currentLocation[1] + "]"
-                : "N/A") + "\n" +
-                '}';
+                : "N/A") + "\n";
     }
 }

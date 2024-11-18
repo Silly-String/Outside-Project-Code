@@ -26,21 +26,52 @@ public class InLocalDataAccessObject implements SearchByAirlineIDDataAccessInter
     // File path to the local JSON file
     private static final String LOCAL_FILE_PATH = "..."; // Use any local file path with a sample API call
 
+    // Helper method to fetch and parse flight data from the local file
+    private List<JSONObject> fetchFlightsFromLocalFile() {
+        List<JSONObject> flightDataList = new ArrayList<JSONObject>();
+
+        try {
+            // Read the local file
+            BufferedReader reader = new BufferedReader(new FileReader(LOCAL_FILE_PATH));
+            StringBuilder content = new StringBuilder();
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                content.append(line);
+            }
+            reader.close();
+
+            // Parse the response JSON from the file
+            JSONObject jsonResponse = new JSONObject(content.toString());
+            JSONArray data = jsonResponse.getJSONArray("data");
+
+            // Add each flight data JSON object to the list
+            for (int i = 0; i < data.length(); i++) {
+                flightDataList.add(data.getJSONObject(i));
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return flightDataList;
+    }
+
     // Helper method to parse flight data into a Flight object using the FlightFactory
     private Flight parseFlightData(JSONObject flightData) {
         // Create the necessary objects to pass into the FlightFactory
-        Airline airline = new Airline(flightData.getJSONObject("airline").getString("iata"),
-                flightData.getJSONObject("airline").getString("name"));
-        Airport departureAirport = new Airport(flightData.getJSONObject("departure").getString("iata"),
-                flightData.getJSONObject("departure").getString("airport"), null);
-        Airport arrivalAirport = new Airport(flightData.getJSONObject("arrival").getString("iata"),
-                flightData.getJSONObject("arrival").getString("airport"), null);
+        Airline airline = new Airline(flightData.getJSONObject("airline").optString("iata", "N/A"),
+                flightData.getJSONObject("airline").optString("name", "N/A"));
+        Airport departureAirport = new Airport(flightData.getJSONObject("departure").optString("iata", "N/A"),
+                flightData.getJSONObject("departure").optString("airport", "N/A"), null);
+        Airport arrivalAirport = new Airport(flightData.getJSONObject("arrival").optString("iata", "N/A"),
+                flightData.getJSONObject("arrival").optString("airport", "N/A"), null);
 
         // Time formatting and extraction
-        String scheduledDepartureTime = flightData.getJSONObject("departure").getString("scheduled");
-        String estimatedDepartureTime = flightData.getJSONObject("departure").getString("estimated");
-        String scheduledArrivalTime = flightData.getJSONObject("arrival").getString("scheduled");
-        String estimatedArrivalTime = flightData.getJSONObject("arrival").getString("estimated");
+        String scheduledDepartureTime = flightData.getJSONObject("departure").optString("scheduled", "N/A");
+        String estimatedDepartureTime = flightData.getJSONObject("departure").optString("estimated", "N/A");
+        String scheduledArrivalTime = flightData.getJSONObject("arrival").optString("scheduled", "N/A");
+        String estimatedArrivalTime = flightData.getJSONObject("arrival").optString("estimated", "N/A");
 
         // DateTimeFormatter for desired format
         String timeFormat = "yyyy/MM/dd HH:mm";  // Format pattern
@@ -71,12 +102,12 @@ public class InLocalDataAccessObject implements SearchByAirlineIDDataAccessInter
         // Use the FlightFactory to create and return the Flight object
         FlightFactory flightFactory = new FlightFactory();
         return flightFactory.create(
-                flightData.getJSONObject("flight").getString("iata"),
-                flightData.getString("flight_date"),
+                flightData.getJSONObject("flight").optString("iata", "N/A"),
+                flightData.optString("flight_date", "N/A"),
                 airline,
                 departureAirport,
                 arrivalAirport,
-                flightData.getString("flight_status"),
+                flightData.optString("flight_status", "N/A"),
                 formattedScheduledArrivalTime,  // Updated formatted time
                 formattedScheduledDepartureTime, // Updated formatted time
                 formattedEstimatedArrivalTime,   // Updated formatted time
@@ -85,37 +116,34 @@ public class InLocalDataAccessObject implements SearchByAirlineIDDataAccessInter
         );
     }
 
+    public List<Flight> getFlights() {
+        List<Flight> flights = new ArrayList<>();
+
+        // Fetch the data from the API
+        List<JSONObject> flightDataList = fetchFlightsFromLocalFile();
+
+        // Iterate through the data
+        for (JSONObject flightData : flightDataList) {
+            Flight flight = parseFlightData(flightData);
+            flights.add(flight);
+        }
+
+        return flights;
+    }
+
     @Override
     public List<Flight> getFlightsByAirlineId(String airlineId) {
         List<Flight> flights = new ArrayList<>();
 
-        try {
-            // Read the local file
-            BufferedReader reader = new BufferedReader(new FileReader(LOCAL_FILE_PATH));
-            StringBuilder content = new StringBuilder();
-            String line;
-            while ((line = reader.readLine()) != null) {
-                content.append(line);
+        // Read the flight data from the local file
+        List<JSONObject> flightDataList = fetchFlightsFromLocalFile();
+
+        // Iterate through the data and filter by airlineId
+        for (JSONObject flightData : flightDataList) {
+            if (flightData.getJSONObject("airline").getString("iata").equals(airlineId)) {
+                Flight flight = parseFlightData(flightData);
+                flights.add(flight);
             }
-            reader.close();
-
-            // Parse the response JSON from the file
-            JSONObject jsonResponse = new JSONObject(content.toString());
-            JSONArray data = jsonResponse.getJSONArray("data");
-
-            // Iterate through the data and filter by airlineId
-            for (int i = 0; i < data.length(); i++) {
-                JSONObject flightData = data.getJSONObject(i);
-
-                // Check if the airline matches the provided airlineId
-                if (flightData.getJSONObject("airline").getString("iata").equals(airlineId)) {
-                    Flight flight = parseFlightData(flightData);
-                    flights.add(flight);
-                }
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
         }
 
         return flights;
@@ -125,35 +153,34 @@ public class InLocalDataAccessObject implements SearchByAirlineIDDataAccessInter
     public List<Flight> getFlightsByFlightNumber(String flightNumber) {
         List<Flight> flights = new ArrayList<>();
 
-        try {
-            // Read the local file
-            BufferedReader reader = new BufferedReader(new FileReader(LOCAL_FILE_PATH));
-            StringBuilder content = new StringBuilder();
-            String line;
-            while ((line = reader.readLine()) != null) {
-                content.append(line);
+        // Fetch the data from the API
+        List<JSONObject> flightDataList = fetchFlightsFromLocalFile();
+
+        // Iterate through the data and filter by flight number
+        for (JSONObject flightData : flightDataList) {
+            if (flightData.getJSONObject("flight").getString("iata").equals(flightNumber)) {
+                Flight flight = parseFlightData(flightData);
+                flights.add(flight);
             }
-            reader.close();
-
-            // Parse the response JSON from the file
-            JSONObject jsonResponse = new JSONObject(content.toString());
-            JSONArray data = jsonResponse.getJSONArray("data");
-
-            // Iterate through the data and filter by airlineId
-            for (int i = 0; i < data.length(); i++) {
-                JSONObject flightData = data.getJSONObject(i);
-
-                // Check if the airline matches the provided airlineId
-                if (flightData.getJSONObject("airline").getString("iata").equals(flightNumber)) {
-                    Flight flight = parseFlightData(flightData);
-                    flights.add(flight);
-                }
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
         }
 
         return flights;
+    }
+
+    /**
+     * This is just a check that the flight caller works. Will be moved to test files at a later date.
+     */
+    public static void main(String[] args) {
+        // Create an instance of the DAO class
+        APICallDataAccessObject dao = new APICallDataAccessObject();
+
+        // Call the instance method using the object
+        List<Flight> flights = dao.getFlights();
+
+        // Iterate through the flights and print details
+        for (Flight flight : flights) {
+            System.out.println(flight.toString());
+            System.out.println();  // This adds a blank line
+        }
     }
 }
