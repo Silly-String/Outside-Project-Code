@@ -27,7 +27,6 @@ public class InLocalDataAccessObject implements SearchByAirlineIDDataAccessInter
     private static final String LOCAL_FILE_PATH = "..."; // Use any local file path with a sample API call
 
     // Helper method to fetch and parse flight data from the local file
-    //TODO: FIND ISSUE
     private List<JSONObject> fetchFlightsFromLocalFile() {
         List<JSONObject> flightDataList = new ArrayList<JSONObject>();
 
@@ -176,7 +175,7 @@ public class InLocalDataAccessObject implements SearchByAirlineIDDataAccessInter
      */
     public static void main(String[] args) {
         // Create an instance of the DAO class
-        APICallDataAccessObject dao = new APICallDataAccessObject();
+        InLocalDataAccessObject dao = new InLocalDataAccessObject();
 
         // Call the instance method using the object
         List<Flight> flights = dao.getFlights();
