@@ -1,4 +1,4 @@
-package java.entities;
+package entities;
 
 /**
  * The representation of an airport in our program.

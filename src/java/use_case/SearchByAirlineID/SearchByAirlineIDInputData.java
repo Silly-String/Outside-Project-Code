@@ -1,4 +1,4 @@
-package java.use_case.SearchByAirlineID;
+package use_case.SearchByAirlineID;
 
 /**
  * Input Data for the Search By Airline ID Use Case.

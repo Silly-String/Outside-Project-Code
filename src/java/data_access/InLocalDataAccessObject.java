@@ -1,19 +1,19 @@
-package java.data_access;
+package data_access;
 
-import java.entities.Flight;
-import java.entities.FlightFactory;
-import java.entities.Airline;
-import java.entities.Airport;
+import entities.Flight;
+import entities.FlightFactory;
+import entities.Airline;
+import entities.Airport;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.use_case.SearchByAirlineID.SearchByAirlineIDDataAccessInterface;
+import use_case.SearchByAirlineID.SearchByAirlineIDDataAccessInterface;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.use_case.SearchByFlightNumber.SearchByFlightNumberDataAccessInterface;
+import use_case.SearchByFlightNumber.SearchByFlightNumberDataAccessInterface;
 import java.util.ArrayList;
 import java.util.List;
 
