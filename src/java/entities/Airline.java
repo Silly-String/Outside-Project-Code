@@ -1,4 +1,4 @@
-package java.entities;
+package entities;
 
 /**
  * Represents an airline with relevant details.

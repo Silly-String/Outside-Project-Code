@@ -1,19 +1,19 @@
-package java.data_access;
+package data_access;
 
-import java.entities.Flight;
-import java.entities.FlightFactory;
-import java.entities.Airline;
-import java.entities.Airport;
+import entities.Flight;
+import entities.FlightFactory;
+import entities.Airline;
+import entities.Airport;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.use_case.SearchByAirlineID.SearchByAirlineIDDataAccessInterface;
+import use_case.SearchByAirlineID.SearchByAirlineIDDataAccessInterface;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.use_case.SearchByFlightNumber.SearchByFlightNumberDataAccessInterface;
+import use_case.SearchByFlightNumber.SearchByFlightNumberDataAccessInterface;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -150,5 +150,31 @@ public class HelperBasedInLocalDataAccessObject implements SearchByAirlineIDData
         }
 
         return flights;
+    }
+
+    public static void main(String[] args) {
+        // Create an instance of the DAO class
+        HelperBasedInLocalDataAccessObject dao = new HelperBasedInLocalDataAccessObject();
+
+        // Call the instance method using the object
+        List<Flight> flights = dao.getFlightsByFlightNumber("AAR286");
+
+        // Iterate through the flights and print details
+        for (Flight flight : flights) {
+            System.out.println("Flight Details:");
+            System.out.println("Flight Number: " + flight.getFlightNumber());
+            System.out.println("Flight Date: " + flight.getFlightDate());
+            System.out.println("Airline: " + (flight.getAirline() != null ? flight.getAirline().getName() : "N/A"));
+            System.out.println("Departure Airport: " + (flight.getDepartureAirport() != null ? flight.getDepartureAirport().getName() : "N/A"));
+            System.out.println("Arrival Airport: " + (flight.getArrivalAirport() != null ? flight.getArrivalAirport().getName() : "N/A"));
+            System.out.println("Status: " + flight.getStatus());
+            System.out.println("Scheduled Departure: " + flight.getScheduledDepartureTime());
+            System.out.println("Estimated Departure: " + flight.getEstimatedDepartureTime());
+            System.out.println("Scheduled Arrival: " + flight.getScheduledArrivalTime());
+            System.out.println("Estimated Arrival: " + flight.getEstimatedArrivalTime());
+            System.out.println("Location: " + (flight.getCurrentLocation() != null
+                    ? "[" + flight.getCurrentLocation()[0] + ", " + flight.getCurrentLocation()[1] + "]"
+                    : "N/A"));
+        }
     }
 }

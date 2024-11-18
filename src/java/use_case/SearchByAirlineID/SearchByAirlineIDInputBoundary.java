@@ -1,4 +1,4 @@
-package java.use_case.SearchByAirlineID;
+package use_case.SearchByAirlineID;
 
 /**
  * Input Boundary for actions which are related to searching by Airline ID.

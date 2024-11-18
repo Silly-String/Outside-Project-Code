@@ -1,4 +1,4 @@
-package java.entities;
+package entities;
 
 /**
  * The representation of a flight in our program.
@@ -115,7 +115,8 @@ public class Flight {
     @Override
     public String toString() {
         return "Flight {\n" +
-                "  flightNumber='" + (airline != null ? airline.getName() : "N/A") + "',\n" +
+                "  flightNumber='" + flightNumber + "',\n" +
+                "  flightDate='" + flightDate + "',\n" +
                 "  airline=" + (airline != null ? airline.getName() : "N/A") + ",\n" +
                 "  departureAirport=" + (departureAirport != null ? departureAirport.getName() : "N/A") + ",\n" +
                 "  arrivalAirport=" + (arrivalAirport != null ? arrivalAirport.getName() : "N/A") + ",\n" +
@@ -124,7 +125,9 @@ public class Flight {
                 "  scheduledArrivalTime='" + scheduledArrivalTime + "',\n" +
                 "  estimatedDepartureTime='" + estimatedDepartureTime + "',\n" +
                 "  estimatedArrivalTime='" + estimatedArrivalTime + "',\n" +
-                "  currentLocation=" + (currentLocation != null ? "[" + currentLocation[0] + ", " + currentLocation[1] + "]" : "N/A") + "\n" +
+                "  currentLocation=" + (currentLocation != null && currentLocation.length >= 2
+                ? "[" + currentLocation[0] + ", " + currentLocation[1] + "]"
+                : "N/A") + "\n" +
                 '}';
     }
 }
