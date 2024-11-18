@@ -132,6 +132,7 @@ public class InLocalDataAccessObject implements SearchByAirlineIDDataAccessInter
     }
 
     @Override
+    //TODO: FIND ISSUE
     public List<Flight> getFlightsByAirlineId(String airlineId) {
         List<Flight> flights = new ArrayList<>();
 
@@ -150,6 +151,7 @@ public class InLocalDataAccessObject implements SearchByAirlineIDDataAccessInter
     }
 
     @Override
+    //TODO: FIND ISSUE
     public List<Flight> getFlightsByFlightNumber(String flightNumber) {
         List<Flight> flights = new ArrayList<>();
 
@@ -169,10 +171,11 @@ public class InLocalDataAccessObject implements SearchByAirlineIDDataAccessInter
 
     /**
      * This is just a check that the flight caller works. Will be moved to test files at a later date.
+     * Uncomment to run.
      */
     public static void main(String[] args) {
         // Create an instance of the DAO class
-        APICallDataAccessObject dao = new APICallDataAccessObject();
+        InLocalDataAccessObject dao = new InLocalDataAccessObject();
 
         // Call the instance method using the object
         List<Flight> flights = dao.getFlights();
