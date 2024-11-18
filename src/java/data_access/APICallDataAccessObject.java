@@ -25,7 +25,7 @@ import java.util.List;
 public class APICallDataAccessObject implements SearchByAirlineIDDataAccessInterface,
         SearchByFlightNumberDataAccessInterface {
 
-    private static final String ACCESS_KEY = "90f868a7c24be8eb22abbb87da67ed55"; // Replace with your own access key
+    private static final String ACCESS_KEY = "..."; // Replace with your own access key
     // (eg: "f3b8e30f646315a2874f86284f52d5b9")
 
     // Helper method to fetch and parse flight data from the API
